@@ -4,8 +4,8 @@ import com.back.shared.member.dto.MemberDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
-public class MemberJoinEvent {
-    private final MemberDto member;
+@AllArgsConstructor
+public class MemberModifiedEvent {
+    public final MemberDto member;
 }
