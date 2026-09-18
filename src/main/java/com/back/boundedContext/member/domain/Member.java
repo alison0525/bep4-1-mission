@@ -20,13 +20,14 @@ public class Member extends SourceMember {
     }
 
     public int increaseActivityScore(int amount) {
+        if (amount == 0) return getActivityScore();
+
         setActivityScore(getActivityScore() + amount);
 
         publishEvent(
-                new MemberModifiedEvent(
-                        new MemberDto(this)
-                )
+                new MemberModifiedEvent(new MemberDto(this))
         );
+
         return getActivityScore();
     }
 }
