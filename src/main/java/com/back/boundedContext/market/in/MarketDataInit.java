@@ -5,7 +5,7 @@ import com.back.boundedContext.market.domain.Cart;
 import com.back.boundedContext.market.domain.MarketMember;
 import com.back.boundedContext.market.domain.Order;
 import com.back.boundedContext.market.domain.Product;
-import com.back.shared.member.out.PostApiClient;
+import com.back.shared.post.out.PostApiClient;
 import com.back.shared.post.dto.PostDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
@@ -39,6 +39,7 @@ public class MarketDataInit {
             self.makeBaseProducts();
             self.makeBaseCartItems();
             self.makeBaseOrders();
+            self.makeBasePaidOrders();
         };
     }
 
@@ -180,5 +181,14 @@ public class MarketDataInit {
         cart1.addItem(product2);
         cart1.addItem(product3);
         cart1.addItem(product4);
+    }
+
+    @Transactional
+    public void makeBasePaidOrders() {
+        Order order1 = marketFacade.findOrderById(1).get();
+
+        if (order1.isPaid()) return;
+
+        marketFacade.requestPayment(order1, 0);
     }
 }

@@ -1,4 +1,4 @@
-package com.back.shared.member.out;
+package com.back.shared.post.out;
 
 import com.back.shared.post.dto.PostDto;
 import org.springframework.core.ParameterizedTypeReference;
