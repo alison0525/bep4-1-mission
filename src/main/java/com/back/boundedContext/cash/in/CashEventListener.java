@@ -3,7 +3,7 @@ package com.back.boundedContext.cash.in;
 import com.back.boundedContext.cash.app.CashFacade;
 import com.back.shared.cash.event.CashMemberCreatedEvent;
 import com.back.shared.market.event.MarketOrderPaymentRequestedEvent;
-import com.back.shared.member.event.MemberJoinEvent;
+import com.back.shared.member.event.MemberJoinedEvent;
 import com.back.shared.member.event.MemberModifiedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class CashEventListener {
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
-    public void handle(MemberJoinEvent event) {
+    public void handle(MemberJoinedEvent event) {
         cashFacade.syncMember(event.getMember());
     }
 
