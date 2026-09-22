@@ -77,7 +77,6 @@ public class Order extends BaseIdAndTime {
     public void completePayment() {
         paymentDate = LocalDateTime.now();
 
-
         publishEvent(
                 new MarketOrderPaymentCompletedEvent(
                         toDto()
