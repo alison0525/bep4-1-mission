@@ -50,8 +50,8 @@ public class PayoutDataInit {
         return args -> {
             self.forceMakePayoutReadyCandidatesItems();
             self.collectPayoutItemsMore();
-            self.runCollectItemsAndCompletePayoutsBatchJob();
             self.completePayoutsMore();
+            self.runCollectItemsAndCompletePayoutsBatchJob();
         };
     }
 
